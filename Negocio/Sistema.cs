@@ -17,13 +17,13 @@ namespace Negocio
             conexionDaoApuesta = new DaoImplApuesta();
             conexionDaoEvento = new DaoImplEvento();
         }
-        public Apuesta InsertarApuesta(int idUsuario, float importe, int idEvento)
+        public Apuesta InsertarApuesta(int idUsuario, float importe, int idMercado)
         {
-            ApuestaDTO apuesta = new ApuestaDTO(idUsuario, importe, idEvento);
+            ApuestaDTO apuesta = new ApuestaDTO(idUsuario, importe, idMercado);
             apuesta = conexionDaoApuesta.AgregarApuesta(apuesta);
             if (apuesta.id != null)
             {
-                Apuesta result = new Apuesta(apuesta.id.GetValueOrDefault(), apuesta.idUsuario, apuesta.importe, apuesta.idEvento);
+                Apuesta result = new Apuesta(apuesta.id.GetValueOrDefault(), apuesta.idUsuario, apuesta.importe, apuesta.idMercado);
                 return result;
             }
             return null;
