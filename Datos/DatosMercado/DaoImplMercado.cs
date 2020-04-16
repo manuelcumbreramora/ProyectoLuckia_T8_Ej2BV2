@@ -61,7 +61,7 @@ namespace Datos.DatosMercado
             }
         }
 
-        public DTOMercado ModificarCuotaMercado(int idMercado, string nombreMercado)
+        public DTOMercado ModificarCuotaMercado(int idMercado, float cuotaMercado)
         {
             DTOMercado mercado = new DTOMercado();
             SqlConnection connection = new SqlConnection(this.conexion.GetNombreConexion());
