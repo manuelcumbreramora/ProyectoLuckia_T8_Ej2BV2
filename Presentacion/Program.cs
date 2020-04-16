@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Presentacion
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
+
             FuncionesPresentacion vistas = new FuncionesPresentacion();
 
             vistas.Inicio(1);
+
         }
     }
 }
