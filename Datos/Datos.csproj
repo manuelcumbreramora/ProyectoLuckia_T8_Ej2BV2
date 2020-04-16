@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Conexion.cs" />
+    <Compile Include="DaoImplEvento.cs" />
+    <Compile Include="DTOEvento.cs" />
+    <Compile Include="IDAOEvento.cs" />
     <Compile Include="DaoApuesta\ApuestaDTO.cs" />
     <Compile Include="DaoApuesta\DaoImplApuesta.cs" />
     <Compile Include="DaoApuesta\IDAOApuesta.cs" />
