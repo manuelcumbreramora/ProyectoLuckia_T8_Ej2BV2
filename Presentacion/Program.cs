@@ -10,6 +10,9 @@ namespace Presentacion
     {
         static void Main(string[] args)
         {
+            FuncionesPresentacion vistas = new FuncionesPresentacion();
+
+            vistas.Inicio(1);
         }
     }
 }
