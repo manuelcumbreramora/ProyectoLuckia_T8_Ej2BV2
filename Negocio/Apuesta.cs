@@ -35,21 +35,21 @@ namespace Negocio
         {
             this.IdUsuario = id;
         }
-        private int IdEvento;
-        public int GetIdEvento()
+        private int IdMercado;
+        public int GetIdMercado()
         {
-            return this.IdEvento;
+            return this.IdMercado;
         }
-        public void SetIdEvento(int id)
+        public void SetIdMercado(int id)
         {
-            this.IdEvento = id;
+            this.IdMercado = id;
         }
         public Apuesta(int idApuesta, int idUsuario, float importe, int idEvento)
         {
             IdApuesta = idApuesta;
             Importe = importe;
             IdUsuario = idUsuario;
-            IdEvento = idEvento;
+            IdMercado = idEvento;
         }
 
         public Apuesta()

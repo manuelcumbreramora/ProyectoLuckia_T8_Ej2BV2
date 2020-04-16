@@ -16,17 +16,17 @@ namespace Datos.DaoApuesta
         {
             conexion = new Conexion();
         }
-        public ApuestaDTO AgregarApuesta(int IdUsuario, float Importe, int IdEvento)
+        public ApuestaDTO AgregarApuesta(int IdUsuario, float Importe, int IdMercado)
         {
-            ApuestaDTO apuesta = new ApuestaDTO(IdUsuario,Importe,IdEvento);
+            ApuestaDTO apuesta = new ApuestaDTO(IdUsuario,Importe,IdMercado);
             SqlConnection connection = new SqlConnection(this.conexion.GetNombreConexion());
             connection.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "INSERT INTO Apuesta(Importe,IdUsuario,IdEvento) OUTPUT INSERTED.IdApuesta VALUES(@Importe,@IdUsuario,@IdEvento)";
+            cmd.CommandText = "INSERT INTO Apuesta(Importe,IdUsuario,IdMercado) OUTPUT INSERTED.IdApuesta VALUES(@Importe,@IdUsuario,@IdMercado)";
             cmd.Parameters.AddWithValue("@Importe", apuesta.Importe);
             cmd.Parameters.AddWithValue("@IdUsuario", apuesta.IdUsuario);
-            cmd.Parameters.AddWithValue("@IdEvento", apuesta.IdEvento);
+            cmd.Parameters.AddWithValue("@IdMercado", apuesta.IdMercado);
 
             try
             {
@@ -49,7 +49,7 @@ namespace Datos.DaoApuesta
             connection.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT Importe, IdApuesta, IdEvento FROM Apuesta WHERE IdUsuario=@Id";
+            cmd.CommandText = "SELECT Importe, IdApuesta, IdMercado FROM Apuesta WHERE IdUsuario=@Id";
             cmd.Parameters.AddWithValue("@Id", IdJugador);
             try
             {
@@ -62,7 +62,7 @@ namespace Datos.DaoApuesta
                         ApuestaDTO apuesta = new ApuestaDTO();
                         apuesta.Importe = (float)reader.GetDouble(0);
                         apuesta.IdApuesta = reader.GetInt32(1);
-                        apuesta.IdEvento = reader.GetInt32(2);
+                        apuesta.IdMercado = reader.GetInt32(2);
                         apuesta.IdUsuario = IdJugador;
                         listaApuestas.Add(apuesta);
                     }

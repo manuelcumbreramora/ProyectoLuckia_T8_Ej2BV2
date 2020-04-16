@@ -10,7 +10,7 @@ namespace Datos.DaoApuesta
     {
         List<ApuestaDTO> RecuperarListaApuestasPorIdJugador(int IdJugador);
 
-        ApuestaDTO AgregarApuesta(int IdUsuario, float Importe, int IdEvento);
+        ApuestaDTO AgregarApuesta(int IdUsuario, float Importe, int IdMercado);
 
     }
 }
