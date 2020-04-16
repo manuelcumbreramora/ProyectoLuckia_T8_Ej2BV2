@@ -1,16 +1,25 @@
 ﻿using System;
 
-public class Conexion
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Datos
 {
-    private String NombreConexion;
-
-    public Conexion()
+    public class Conexion
     {
-        NombreConexion = "Data Source=PLX300000000411\\SQLEXPRESS;Initial Catalog=Tema8_Ej2A;Integrated Security=True";
-    }
+        private String NombreConexion;
 
-    public string GetNombreConexion()
-    {
-        return this.NombreConexion;
+        public Conexion()
+        {
+            NombreConexion = @"server=PLX300000000415\SQLEXPRESS; database=Tema8_Ej2A; integrated security=true";
+        }
+
+        public string GetNombreConexion()
+        {
+            return this.NombreConexion;
+        }
+
     }
 }
