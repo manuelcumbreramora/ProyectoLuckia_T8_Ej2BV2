@@ -12,7 +12,7 @@ namespace Datos
 
         public Conexion()
         {
-            NombreConexion = "Data Source=PLX300000000413\\SQLEXPRESS;Initial Catalog=Tema8_Ej2B;Integrated Security=True";
+            NombreConexion = @"server=PLX300000000415\SQLEXPRESS; database=Tema8_Ej2A; integrated security=true";
         }
 
         public string GetNombreConexion()

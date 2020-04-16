@@ -46,6 +46,9 @@
     <Compile Include="DaoApuesta\ApuestaDTO.cs" />
     <Compile Include="DaoApuesta\DaoImplApuesta.cs" />
     <Compile Include="DaoApuesta\IDAOApuesta.cs" />
+    <Compile Include="DatosMercado\DaoImplMercado.cs" />
+    <Compile Include="DatosMercado\DTOMercado.cs" />
+    <Compile Include="DatosMercado\IDAOMercado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
