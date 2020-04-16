@@ -52,7 +52,7 @@ namespace Negocio
 
             foreach (DTOEvento oDTO in listaEventosDTO)
             {
-                Evento nuevoEvento = new Evento(oDTO.idEvento, oDTO.nombre, oDTO.idMercado);
+                Evento nuevoEvento = new Evento(oDTO.idEvento, oDTO.idMercado, oDTO.nombre, oDTO.nombreEvento);
 
                 listaEventos.Add(nuevoEvento);
             }
@@ -65,7 +65,7 @@ namespace Negocio
             DTOEvento eventoDTO = this.conexionDaoEvento.RecuperarEvento(idEvento);
             if (eventoDTO != null)
             {
-                Evento nuevoEvento = new Evento(eventoDTO.idEvento, eventoDTO.nombre, eventoDTO.idMercado);
+                Evento nuevoEvento = new Evento(eventoDTO.idEvento, eventoDTO.idMercado, eventoDTO.nombre, eventoDTO.nombreEvento);
                 return nuevoEvento;
             }
             else
@@ -80,7 +80,7 @@ namespace Negocio
             DTOEvento eventoDTO = this.conexionDaoEvento.RecuperarEventoPorNombreEvento(nombre);
             if (eventoDTO != null)
             {
-                Evento nuevoEvento = new Evento(eventoDTO.idEvento, eventoDTO.nombre, eventoDTO.idMercado);
+                Evento nuevoEvento = new Evento(eventoDTO.idEvento, eventoDTO.idMercado, eventoDTO.nombre, eventoDTO.nombreEvento);
                 return nuevoEvento;
             }
             else
@@ -107,7 +107,7 @@ namespace Negocio
 
         public string ModificarEvento(int idEvento, string nombreEvento, string nombreMercado)
         {
-            DTOEvento modEventoDTO, modEventoDTO2;
+            DTOEvento modEventoDTO;
             if (nombreEvento != "" && nombreMercado != "")
             {
                 modEventoDTO = conexionDaoEvento.ModificarNombreEvento(idEvento, nombreEvento);
@@ -124,7 +124,7 @@ namespace Negocio
                 modEventoDTO = conexionDaoMercado.ModificarNombreMercado(idEvento, nombreMercado);
             }
 
-            if (modEventoDTO != null || modEventoDTO2 != null)
+            if (modEventoDTO != null)
             {
                 return "El evento " + modEventoDTO.nombre + " ha sido modificado";
             }
