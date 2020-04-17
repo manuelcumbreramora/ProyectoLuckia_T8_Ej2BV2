@@ -41,12 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Conexion.cs" />
-    <Compile Include="DaoImplEvento.cs" />
-    <Compile Include="DTOEvento.cs" />
-    <Compile Include="IDAOEvento.cs" />
+    <Compile Include="DaoEvento\DaoImplEvento.cs" />
+    <Compile Include="DaoEvento\DTOEvento.cs" />
+    <Compile Include="DaoEvento\IDAOEvento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
