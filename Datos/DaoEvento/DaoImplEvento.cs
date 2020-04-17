@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 public class DaoImplEvento : IDAOEvento
@@ -80,36 +81,74 @@ public class DaoImplEvento : IDAOEvento
 
     }
 
-    public DTOEvento RecuperarNombreEventoDAO(string nombreevento)
+    public List<DTOEvento> RecuperarListaEvento()
     {
-        DTOEvento monederonombre = new DTOEvento();
+        List<DTOEvento> listaeventos = new List<DTOEvento>();
         SqlConnection connection = new SqlConnection(this.conexion.GetNombreConexion());
         connection.Open();
-        SqlCommand comando = new SqlCommand();
-        comando.Connection = connection;
-        String consulta = "SELECT Nombre,NombreEvento FROM Evento WHERE NombreEvento=" + nombreevento + ";";
-        comando.CommandText = consulta;
-
-        SqlDataReader registro = comando.ExecuteReader();
-        if (registro.Read())
+        SqlCommand cmd = new SqlCommand();
+        cmd.Connection = connection;
+        cmd.CommandText = "SELECT IdMercado, IdEvento FROM Evento " ;
+       
+        try
         {
-            DTOEvento nuevoEvento = new DTOEvento();
-            nuevoEvento.SetIdEventoDTO(registro.GetInt32(0));
-            nuevoEvento.SetIdMercadoDTO(registro.GetInt32(1));
-            nuevoEvento.SetNombreDTO(registro.GetString(2));
-            nuevoEvento.SetNombreEventoDTO(registro.GetString(3));
-            nuevoEvento.SetNombreEventoDTO(nombreevento);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
 
-            registro.Close();
+                while (reader.Read())
+                {
+                    DTOEvento evento = new DTOEvento();
+                    evento.IdEvento = reader.GetInt32(0);
+                    evento.IdMercado = reader.GetInt32(1);
+                    evento.Nombre = reader.GetString(2);
+                    listaeventos.Add(evento);
+                }
+            }
+            reader.Close();
             connection.Close();
-            return nuevoEvento;
+            return listaeventos;
         }
-        else
+        catch (Exception)
         {
-            registro.Close();
             connection.Close();
-            return null;
+            throw;
         }
     }
+
+    
+
+    /* public DTOEvento RecuperarNombreEventoDAO(string nombreevento)
+     {
+         DTOEvento monederonombre = new DTOEvento();
+         SqlConnection connection = new SqlConnection(this.conexion.GetNombreConexion());
+         connection.Open();
+         SqlCommand comando = new SqlCommand();
+         comando.Connection = connection;
+         String consulta = "SELECT Nombre,NombreEvento FROM Evento WHERE NombreEvento=" + nombreevento + ";";
+         comando.CommandText = consulta;
+
+         SqlDataReader registro = comando.ExecuteReader();
+         if (registro.Read())
+         {
+             DTOEvento nuevoEvento = new DTOEvento();
+             nuevoEvento.SetIdEventoDTO(registro.GetInt32(0));
+             nuevoEvento.SetIdMercadoDTO(registro.GetInt32(1));
+             nuevoEvento.SetNombreDTO(registro.GetString(2));
+             nuevoEvento.SetNombreEventoDTO(registro.GetString(3));
+             nuevoEvento.SetNombreEventoDTO(nombreevento);
+
+             registro.Close();
+             connection.Close();
+             return nuevoEvento;
+         }
+         else
+         {
+             registro.Close();
+             connection.Close();
+             return null;
+         }
+     }*/
+
 }
 
