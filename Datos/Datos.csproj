@@ -41,23 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
+    <Compile Include="Class1.cs" />
+    <Compile Include="Conexion.cs" />
     <Compile Include="DaoEvento\DaoImplEvento.cs" />
     <Compile Include="DaoEvento\DTOEvento.cs" />
     <Compile Include="DaoEvento\IDAOEvento.cs" />
-=======
-    <Compile Include="Class1.cs" />
-    <Compile Include="Conexion.cs" />
-    <Compile Include="DaoImplEvento.cs" />
-    <Compile Include="DTOEvento.cs" />
-    <Compile Include="IDAOEvento.cs" />
     <Compile Include="DaoApuesta\ApuestaDTO.cs" />
     <Compile Include="DaoApuesta\DaoImplApuesta.cs" />
     <Compile Include="DaoApuesta\IDAOApuesta.cs" />
     <Compile Include="DatosMercado\DaoImplMercado.cs" />
     <Compile Include="DatosMercado\DTOMercado.cs" />
     <Compile Include="DatosMercado\IDAOMercado.cs" />
->>>>>>> bc3f62cc9d88f5f0a621283d55407b79fe0c61a8
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

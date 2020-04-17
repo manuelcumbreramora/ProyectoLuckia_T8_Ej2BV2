@@ -23,10 +23,9 @@ namespace Datos.DatosMercado
             connection.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "";
+            cmd.CommandText = "INSERT INTO Mercado(Nombre, Cuota) VALUES (@Nombre, @Cuota)";
             cmd.Parameters.AddWithValue("@Nombre", mercado.Nombre);
             cmd.Parameters.AddWithValue("@Cuota", mercado.Couta);
-            cmd.Parameters.AddWithValue("@FechaCreacion", mercado.FechaCreacion);
 
             try
             {
@@ -41,18 +40,20 @@ namespace Datos.DatosMercado
             }
         }
 
-        public DTOMercado ModificarNombreMercado(int idMercado, string nombreMercado)
+        public bool ModificarNombreMercado(int idMercado, string nombreMercado)
         {
             DTOMercado mercado = new DTOMercado();
             SqlConnection connection = new SqlConnection(this.conexion.GetNombreConexion());
             connection.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "";
+            cmd.CommandText = "UPDATE Mercado SET Nombre="+nombreMercado+" WHERE IdMercado=" + idMercado;
+
 
             try
             {
-                return mercado;
+                cmd.ExecuteNonQuery();
+                return true;
             }
             catch (Exception)
             {
@@ -61,17 +62,18 @@ namespace Datos.DatosMercado
             }
         }
 
-        public DTOMercado ModificarCuotaMercado(int idMercado, string nombreMercado)
+        public DTOMercado ModificarCuotaMercado(int idMercado, float cuotaMercado)
         {
             DTOMercado mercado = new DTOMercado();
             SqlConnection connection = new SqlConnection(this.conexion.GetNombreConexion());
             connection.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "";
+            cmd.CommandText = "UPDATE Mercado SET Cuota=" + cuotaMercado + " WHERE IdMercado=" + idMercado;
 
             try
             {
+                cmd.ExecuteNonQuery();
                 return mercado;
             }
             catch (Exception)
@@ -88,7 +90,7 @@ namespace Datos.DatosMercado
             connection.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "";
+            cmd.CommandText = "SELECT Nombre, Cuota FROM Mercado WHERE IdMercado=@Id";
             cmd.Parameters.AddWithValue("@Id", id);
             try
             {
@@ -100,7 +102,6 @@ namespace Datos.DatosMercado
                         mercado.IdMercado = id;
                         mercado.Nombre = reader.GetString(0);
                         mercado.Couta = reader.GetFloat(1);
-                        mercado.FechaCreacion = reader.GetDateTime(2);
 
                     }
                 }
